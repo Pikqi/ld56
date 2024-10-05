@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhvihrt8dipll"]
+[gd_scene load_steps=8 format=3 uid="uid://bhvihrt8dipll"]
 
 [ext_resource type="Script" path="res://button.gd" id="1_fkyus"]
-[ext_resource type="Texture2D" uid="uid://0sorgpej62jh" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0516.png" id="2_1qsw6"]
-[ext_resource type="Texture2D" uid="uid://dlsmvp5ac602t" path="res://tile_0515.png" id="3_x67x8"]
-[ext_resource type="Texture2D" uid="uid://cfv2iysf0vq6k" path="res://tile_0516.png" id="4_n1kdq"]
+[ext_resource type="Texture2D" uid="uid://q85jhjrqsrxk" path="res://Buttons/Idle.png" id="2_01nlj"]
+[ext_resource type="Texture2D" uid="uid://blatwufdrwqml" path="res://Buttons/PressedIn1.png" id="3_180hi"]
+[ext_resource type="Texture2D" uid="uid://4c7qtuk0exng" path="res://Buttons/FullPressed.png" id="4_5m7c4"]
+[ext_resource type="Texture2D" uid="uid://ncd65m8iq7l0" path="res://Buttons/PressedOut.png" id="5_3xqo8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_leuex"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_x67x8")
+"texture": ExtResource("2_01nlj")
 }],
 "loop": false,
 "name": &"default",
@@ -17,30 +18,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_n1kdq")
+"texture": ExtResource("3_180hi")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_5m7c4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_x67x8")
+"texture": ExtResource("5_3xqo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
 }],
 "loop": false,
 "name": &"pressed",
-"speed": 10.0
+"speed": 15.0
 }]
 
-[node name="Button" type="Node2D"]
-script = ExtResource("1_fkyus")
+[sub_resource type="CircleShape2D" id="CircleShape2D_gc3ws"]
+radius = 30.0666
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.703125, 0.703125)
-texture = ExtResource("2_1qsw6")
+[node name="Button" type="StaticBody2D"]
+script = ExtResource("1_fkyus")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5.625, 5.625)
+scale = Vector2(1.38, 1.316)
 sprite_frames = SubResource("SpriteFrames_leuex")
+animation = &"pressed"
 
 [node name="SpawnTick" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.439
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.56, 1.56)
+shape = SubResource("CircleShape2D_gc3ws")
 
 [connection signal="timeout" from="SpawnTick" to="." method="_on_spawn_tick_timeout"]

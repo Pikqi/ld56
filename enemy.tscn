@@ -1,12 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuvoq65ec58jk"]
+[gd_scene load_steps=8 format=3 uid="uid://cuvoq65ec58jk"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_bn0a2"]
 [ext_resource type="Texture2D" uid="uid://7a1smbkaiutn" path="res://icon.svg" id="1_rhutm"]
+[ext_resource type="Texture2D" uid="uid://bjb6konwfdwma" path="res://Worm/1.png" id="3_owy1m"]
+[ext_resource type="Texture2D" uid="uid://cowon23pejcb6" path="res://Worm/2.png" id="4_tiked"]
+[ext_resource type="Texture2D" uid="uid://dl0wp6buga4d" path="res://Worm/3.png" id="5_vmogp"]
+[ext_resource type="Texture2D" uid="uid://c6cj6t3538iox" path="res://Worm/4.png" id="6_h1mxl"]
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w8q8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_owy1m")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_tiked")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vmogp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h1mxl")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D" groups=["enemy_group"]]
+position = Vector2(10, 9)
 script = ExtResource("1_bn0a2")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_rhutm")
 
 [node name="FirstTimer" type="Timer" parent="."]
@@ -18,5 +50,11 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22, -55)
+sprite_frames = SubResource("SpriteFrames_5w8q8")
+animation = &"new_animation"
+
 [connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

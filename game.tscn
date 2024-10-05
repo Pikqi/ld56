@@ -1,13 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://decsef3jj3lt5"]
+[gd_scene load_steps=4 format=3 uid="uid://decsef3jj3lt5"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_bhcvq"]
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://button.tscn" id="1_j4pve"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sesmb"]
+size = Vector2(997, 471)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_bhcvq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="BackgroundColor" type="ColorRect" parent="CanvasLayer"]
+z_index = -2
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="DamageColorOverlay" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 1152.0
+offset_bottom = 654.0
+scale = Vector2(1.00712, 1.00483)
+color = Color(0.623529, 0.14902, 0.184314, 0.592157)
 
 [node name="A" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
-position = Vector2(253, 174)
+position = Vector2(872, 515)
 input_name = "A"
 
+[node name="Y" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(872, 330)
+input_name = "Y"
+
+[node name="X" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(777, 422)
+input_name = "X"
+
 [node name="B" parent="." instance=ExtResource("1_j4pve")]
-position = Vector2(442, 178)
+position = Vector2(954, 422)
 input_name = "B"
+
+[node name="SpawnArea" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(568.5, 359.5)
+shape = SubResource("RectangleShape2D_sesmb")
+debug_color = Color(0, 0.6, 0.701961, 0.14902)
