@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://button.tscn" id="1_j4pve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sesmb"]
-size = Vector2(997, 471)
+size = Vector2(469, 405.155)
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_bhcvq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -28,23 +29,34 @@ color = Color(0.623529, 0.14902, 0.184314, 0.592157)
 [node name="A" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(872, 515)
 input_name = "A"
+color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
 
 [node name="Y" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(872, 330)
 input_name = "Y"
+color_mix = Color(0.917, 1, 0.17, 1)
 
 [node name="X" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(777, 422)
 input_name = "X"
+color_mix = Color(0, 0.424825, 0.812361, 1)
 
-[node name="B" parent="." instance=ExtResource("1_j4pve")]
+[node name="B" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(954, 422)
 input_name = "B"
+color_mix = Color(0.735073, 0.468616, 3.85046e-07, 1)
 
 [node name="SpawnArea" type="Area2D" parent="."]
+scale = Vector2(1, 1.02189)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
-position = Vector2(568.5, 359.5)
+position = Vector2(832.5, 392.423)
 shape = SubResource("RectangleShape2D_sesmb")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

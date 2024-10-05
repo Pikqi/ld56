@@ -1,14 +1,20 @@
-extends StaticBody2D
+extends Node2D
 
 @export var input_name = ""
+@export var color_mix:Color = Color(1,1,1)
 const ENEMY = preload("res://enemy.tscn")
 const DISTANCE = 40
+var red_button = false
+var should_move = false
+
 func _unhandled_input(event: InputEvent) -> void:
 	if(event.is_action_pressed(input_name)):
 		print_debug(input_name)
 		$AnimatedSprite2D.play("pressed")
 		var children = get_children(false)
 		var was_valid_input = false
+		if(red_button):
+			get_parent().red_button_press()
 		for a in children:
 			if(a.has_method("button_pressed")):
 				a.button_pressed()
@@ -17,14 +23,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			if get_parent().has_method("bad_press"):
 				get_parent().bad_press()
 
+func get_has_enemy():
+	return get_children().any(func (a:Node):return a.has_method("button_pressed"))
 
-func _on_spawn_tick_timeout() -> void:
-	spawn_enemy()
+func set_red_button(is_red: bool):
+	red_button = is_red
+	if is_red:
+		$AnimatedSprite2D.play("red")
+	else:
+		$AnimatedSprite2D.play("default")
+
+#func _process(delta: float) -> void:
+	#$AnimatedSprite2D.modulate = color_mix
 
 func spawn_enemy():
-	if get_children().any(func (a:Node):return a.has_method("button_pressed")):
+	if get_has_enemy():
 		return
-	elif(randi_range(0,1)==1):
+	if(randi_range(0,1)==1):
 		var enemy = ENEMY.instantiate()
 		print_debug(randf_range(0.0, 2.0) * PI)
 		add_child(enemy)
@@ -35,6 +50,15 @@ func spawn_enemy():
 
 func enemy_attacked():
 	#TODO: check for collisions
+	if red_button:
+		get_parent().change_red_button()
+		return
+	move_button()
+
+
+
+func move_button():
+	should_move = true
 	global_position = get_random_position()
 
 
@@ -47,3 +71,16 @@ func get_random_position():
 	var x = randi_range(area2d.global_position.x + area2d.shape.get_rect().position.x, area2d.global_position.x + area2d.shape.get_rect().end.x)
 	var y = randi_range(area2d.global_position.y + area2d.shape.get_rect().position.y, area2d.global_position.y + area2d.shape.get_rect().end.y)
 	return Vector2(x,y)
+
+var should_really_move = false
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if should_really_move:
+		move_button()
+	if should_move:
+		move_button()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if should_move:
+		should_really_move = true
+	should_move = false
