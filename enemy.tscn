@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuvoq65ec58jk"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_bn0a2"]
+[ext_resource type="Texture2D" uid="uid://7a1smbkaiutn" path="res://icon.svg" id="1_rhutm"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_bn0a2")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_rhutm")
+
+[node name="FirstTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="SecondTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
+[connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]
