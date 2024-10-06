@@ -12,12 +12,17 @@ var spawn_interval = 1.4
 var interval_step = 0.05
 var max_out = 0.7
 
+@export var umiranje: Array[AudioStream]
+
 var player_score = 0
 var first_time = true
 var game_active = false
 var needs_restart = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if game_active == false:
+		if event.is_action_pressed("B"):
+			%Dialog.skip()
 	if needs_restart && !game_active:
 		if event.is_action_pressed("A"):
 			start_game()
@@ -112,6 +117,11 @@ func _on_spawn_timer_timeout() -> void:
 	return
 func on_enemy_killed():
 	player_score+=1
+	var random_zvuk = randi_range(0, 6)
+	$death.stream = umiranje[random_zvuk]
+	$death.pitch_scale = 1.5
+	$death.seek(0.3)
+	$death.play()
 	draw_score()
 
 func draw_score():

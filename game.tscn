@@ -1,12 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://decsef3jj3lt5"]
+[gd_scene load_steps=22 format=3 uid="uid://decsef3jj3lt5"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bhcvq"]
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://Scenes/Button/button.tscn" id="1_j4pve"]
+[ext_resource type="AudioStream" uid="uid://bfckfdcolot1o" path="res://Assets/sfx/umiranja/crvić_umire1.mp3" id="2_bqpuh"]
 [ext_resource type="Shader" path="res://game.gdshader" id="2_k6uao"]
 [ext_resource type="Texture2D" uid="uid://b4d0kcmvv4qcx" path="res://Scenes/background.png" id="3_hovne"]
+[ext_resource type="AudioStream" uid="uid://bevhg57svxpq1" path="res://Assets/sfx/umiranja/crvić_umire2.mp3" id="3_nbloh"]
+[ext_resource type="AudioStream" uid="uid://f2f5vqkdg4fc" path="res://Assets/sfx/umiranja/crvić_umire3.mp3" id="4_nolek"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="4_u8t00"]
+[ext_resource type="AudioStream" uid="uid://cjaioavfavj2s" path="res://Assets/sfx/umiranja/crvić_umire4.mp3" id="5_a5gfo"]
+[ext_resource type="AudioStream" uid="uid://cicbc1qmv1g4n" path="res://Assets/sfx/umiranja/crvić_umire5.mp3" id="6_r0cbq"]
 [ext_resource type="Script" path="res://Scenes/dialog.gd" id="7_64bvv"]
+[ext_resource type="AudioStream" uid="uid://cuycklabjvlb0" path="res://Assets/sfx/umiranja/crvić_umire6.mp3" id="7_spt0p"]
 [ext_resource type="FontFile" uid="uid://dr1wo1inm6yfw" path="res://Assets/Seven Segment.ttf" id="7_ydsit"]
+[ext_resource type="AudioStream" uid="uid://lofuk3lgf1vl" path="res://Assets/sfx/umiranja/pikqi.mp3" id="8_0f3wr"]
 [ext_resource type="AudioStream" uid="uid://gl8rjilyleca" path="res://Assets/Music/8bar1.wav" id="8_837jh"]
 [ext_resource type="AudioStream" uid="uid://ceu18tf3l4bio" path="res://Assets/Music/4bar.wav" id="9_iourf"]
 [ext_resource type="AudioStream" uid="uid://d25p5e1skh15i" path="res://Assets/Music/8bar2.wav" id="10_05o5g"]
@@ -31,6 +38,7 @@ shader_parameter/Noise = SubResource("NoiseTexture2D_0s1i7")
 process_mode = 3
 script = ExtResource("1_bhcvq")
 INIT_COLOR = Color(0.623529, 0.14902, 0.184314, 0.313726)
+umiranje = Array[AudioStream]([ExtResource("2_bqpuh"), ExtResource("3_nbloh"), ExtResource("4_nolek"), ExtResource("5_a5gfo"), ExtResource("6_r0cbq"), ExtResource("7_spt0p"), ExtResource("8_0f3wr")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -160,6 +168,8 @@ autoplay = true
 
 [node name="Intense" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_05o5g")
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="dialogue_over" from="Camera2D/Dialog" to="." method="_on_dialog_dialogue_over"]

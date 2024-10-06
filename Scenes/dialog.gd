@@ -6,6 +6,10 @@ var dialog_step = 0
 var is_dialog_active = false
 signal dialogue_over
 
+func skip():
+	visible = false
+	dialogue_over.emit()
+
 func start_dialog_1():
 	visible = true
 	is_dialog_active = true
