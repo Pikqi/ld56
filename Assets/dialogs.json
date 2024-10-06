@@ -1,5 +1,13 @@
 [
 
-	{"name":"Commandant", "text":"Hello Commrade, please do not press anything yet"},
-	{"name":"Commandant", "text":"Have fun"}
+	{"name":"Commandant", "text":"Comrade, you are operating a nuclear launch system. "},
+	{"name":"Commandant", "text":" Your job is simple: don’t PRESS the red button!! "},
+	{"name":"Commandant", "text":"… CONTAMINATION WARNING:"},
+	{"name":"Commandant", "text":"mysterious tiny creatures invaded the facility"},
+	{"name":"Commandant", "text":"BE WARY "},
+	{"name":"Commandant", "text":"***you can kill the pests by pressing the button they are about to munch on "},
+	{"name":"Commandant", "text":"*** if they try to eat the red button the program will switch it with a safe one "},
+	{"name":"Commandant", "text":"GOOD LUCK "},
+	{"name":"Commandant", "text":"Our country depends on you!!!"}
+
 ]

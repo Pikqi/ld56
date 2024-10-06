@@ -5,34 +5,56 @@ const RECOVERY_RATE = 10.0
 const BAD_PRESS_DAMAGE = 20.0
 const MAX_ENEMIES = 4
 
-const INIT_COLOR = Color(1,0,0,0)
+@export var INIT_COLOR:Color = Color(1,0,0,0)
 var health = MAX_HEALTH
 
-var spawn_interval = 0.8
-var interval_step = 0.1
-var max_out = 0.8
+var spawn_interval = 1.4
+var interval_step = 0.05
+var max_out = 0.7
 
 var player_score = 0
 var first_time = true
 var game_active = false
+var needs_restart = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		start_game()
+	if needs_restart && !game_active:
+		if event.is_action_pressed("A"):
+			start_game()
 
 
 func _ready() -> void:
-	$Dialog.start_dialog_1()
+	%Dialog.start_dialog_1()
 
 func start_game():
-	game_active = true
+	$SpawnTimer.paused = false
 	$SpawnTimer.start()
+	health = MAX_HEALTH
+	player_score = 0
+	draw_score()
+	%Dialog.visible = false
 	change_red_button()
 	first_time = false
 	$SpawnTimer.wait_time = spawn_interval
 	for button in get_tree().get_nodes_in_group("button_group"):
 		button.enemy_killed.connect(on_enemy_killed)
+	game_active = true
+	call_deferred("set_game_active",)
+	$Intro4Bar.stop()
+	$"8bart1".play()
 
+
+func set_game_active():
+	game_active = true
+
+func game_over():
+	game_active = false
+	$SpawnTimer.paused = true
+	%Dialog/Text.text = "GAME OVER, TRY AGAIN ?"
+	%Dialog.visible = true
+	$"8bart1".stop()
+	$Intro4Bar.play()
+	needs_restart = true
 
 func _process(delta: float) -> void:
 	health = minf(health + RECOVERY_RATE * delta ,MAX_HEALTH)
@@ -44,8 +66,7 @@ func _process(delta: float) -> void:
 	new_color.a = 1 - health / MAX_HEALTH
 	%DamageColorOverlay.color = new_color
 	if health < 5:
-		$SpawnTimer.paused =true
-		game_active = false
+		game_over()
 
 func bad_press():
 	health = maxf(health - BAD_PRESS_DAMAGE, 0)
@@ -76,9 +97,6 @@ func change_red_button():
 	else:
 		buttons[r].set_red_button(true)
 
-
-
-
 func _on_spawn_timer_timeout() -> void:
 	$SpawnTimer.wait_time = spawn_interval
 	var buttons = get_tree().get_nodes_in_group("button_group")
@@ -94,8 +112,15 @@ func _on_spawn_timer_timeout() -> void:
 	return
 func on_enemy_killed():
 	player_score+=1
-	$CanvasLayer/Label.text = str(player_score)
+	draw_score()
 
+func draw_score():
+	$CanvasLayer/Label.text = str(player_score)
 
 func _on_dialog_dialogue_over() -> void:
 	start_game()
+
+
+func _on_bart_1_finished() -> void:
+	$"8bart1".stop()
+	$Intense.play()

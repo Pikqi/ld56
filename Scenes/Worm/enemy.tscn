@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cuvoq65ec58jk"]
+[gd_scene load_steps=28 format=3 uid="uid://cuvoq65ec58jk"]
 
 [ext_resource type="Script" path="res://Scenes/Worm/enemy.gd" id="1_t2xh1"]
 [ext_resource type="Texture2D" uid="uid://7a1smbkaiutn" path="res://icon.svg" id="2_qu5u7"]
@@ -12,6 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://brf7f6oxfgebt" path="res://Assets/Worm/3_back.png" id="10_1wx05"]
 [ext_resource type="Texture2D" uid="uid://dnwrxihviw0rk" path="res://Assets/Worm/2_back_alt.png" id="11_gy0bh"]
 [ext_resource type="Texture2D" uid="uid://uwspas3u4wv1" path="res://Assets/Worm/4_back.png" id="12_gpphe"]
+[ext_resource type="Texture2D" uid="uid://d16muvphx35qv" path="res://Assets/Worm/2/IMG_3462.png" id="13_n4xwr"]
+[ext_resource type="Texture2D" uid="uid://bnnbehgn2xk5j" path="res://Assets/Worm/2/IMG_3463.png" id="14_q62nf"]
+[ext_resource type="Texture2D" uid="uid://bqiaq53mhnfcv" path="res://Assets/Worm/2/IMG_3464.png" id="15_pcdlx"]
+[ext_resource type="Texture2D" uid="uid://dah8fedrdxwl1" path="res://Assets/Worm/2/IMG_3465.png" id="16_5k5ya"]
+[ext_resource type="Texture2D" uid="uid://c62unfrlm116u" path="res://Assets/Worm/2/IMG_3457.png" id="17_kbuey"]
+[ext_resource type="Texture2D" uid="uid://c1jkxei5ss48a" path="res://Assets/Worm/2/IMG_3461.png" id="18_f1yin"]
+[ext_resource type="Texture2D" uid="uid://u83c8mtvxjyi" path="res://Assets/Worm/2/IMG_3460.png" id="19_7o20q"]
+[ext_resource type="Texture2D" uid="uid://dle7e22ad7tqf" path="res://Assets/Worm/2/IMG_3459.png" id="20_eyegk"]
+[ext_resource type="Texture2D" uid="uid://db5va75a64lsh" path="res://Assets/Worm/2/IMG_3458.png" id="21_wcwuo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ydqfm"]
 load_path = "res://.godot/imported/1.png-d59e84433910eecfa2e5220e6ec5b5b4.ctex"
@@ -59,7 +68,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [],
 "loop": true,
@@ -126,12 +135,47 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_flfmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_n4xwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_q62nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pcdlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5k5ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kbuey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_f1yin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7o20q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_eyegk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wcwuo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Enemy" type="Node2D" groups=["enemy_group"]]
 z_index = 10
 y_sort_enabled = true
 position = Vector2(10, 9)
 script = ExtResource("1_t2xh1")
-color = Color(0.610846, 0.557314, 0.897917, 1)
+color = Color(0.654902, 0.788235, 0.768627, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -151,8 +195,15 @@ autostart = true
 position = Vector2(-66, -21)
 scale = Vector2(0.282227, 0.282227)
 sprite_frames = SubResource("SpriteFrames_5w8q8")
-animation = &"defeated_2"
+animation = &"attack_2"
+
+[node name="AnimatedHack" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-27, 16)
+scale = Vector2(0.283581, 0.283581)
+sprite_frames = SubResource("SpriteFrames_flfmb")
 
 [connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedHack" to="." method="_on_animated_hack_animation_finished"]
