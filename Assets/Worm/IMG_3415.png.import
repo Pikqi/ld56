@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw6je7hakttbq"
-path="res://.godot/imported/ERROR.png-bb4a153740a394e385a559c916c4984d.ctex"
+uid="uid://clw00rsmc0rac"
+path="res://.godot/imported/IMG_3415.png-a3af26fcc726dc1e7783a796d0f85606.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/ERROR.png"
-dest_files=["res://.godot/imported/ERROR.png-bb4a153740a394e385a559c916c4984d.ctex"]
+source_file="res://Assets/Worm/IMG_3415.png"
+dest_files=["res://.godot/imported/IMG_3415.png-a3af26fcc726dc1e7783a796d0f85606.ctex"]
 
 [params]
 

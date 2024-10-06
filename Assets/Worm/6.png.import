@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chckt1ppwsjq"
-path="res://.godot/imported/FORBIDDEN.png-ab7de870cf2ea37485fe159e85cf294e.ctex"
+uid="uid://5ulqrr6hbxm8"
+path="res://.godot/imported/6.png-3ee30e3c790b2c42393bfb5a0066542d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/FORBIDDEN.png"
-dest_files=["res://.godot/imported/FORBIDDEN.png-ab7de870cf2ea37485fe159e85cf294e.ctex"]
+source_file="res://Assets/Worm/6.png"
+dest_files=["res://.godot/imported/6.png-3ee30e3c790b2c42393bfb5a0066542d.ctex"]
 
 [params]
 

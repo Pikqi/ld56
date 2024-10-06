@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://decsef3jj3lt5"]
+[gd_scene load_steps=6 format=3 uid="uid://decsef3jj3lt5"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bhcvq"]
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://Scenes/Button/button.tscn" id="1_j4pve"]
 [ext_resource type="PackedScene" uid="uid://du2jgrreaylhr" path="res://Scenes/dialog.tscn" id="3_s0nfr"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="4_u8t00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sesmb"]
 size = Vector2(995, 433.534)
@@ -26,6 +27,20 @@ offset_right = 1152.0
 offset_bottom = 654.0
 scale = Vector2(1.00712, 1.00483)
 color = Color(0.623529, 0.14902, 0.184314, 0.592157)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_right = 86.0
+offset_bottom = 99.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
 
 [node name="A" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(872, 515)
@@ -63,9 +78,9 @@ input_name = "X"
 color_mix = Color(0, 0.424825, 0.812361, 1)
 
 [node name="B" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
-position = Vector2(954, 422)
+position = Vector2(984, 425)
 input_name = "B"
-color_mix = Color(0.735073, 0.468616, 3.85046e-07, 1)
+color_mix = Color(0.74, 0, 0.0123331, 1)
 
 [node name="SpawnArea" type="Area2D" parent="."]
 scale = Vector2(1, 1.02189)
@@ -80,6 +95,11 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 wait_time = 0.5
 
 [node name="Dialog" parent="." instance=ExtResource("3_s0nfr")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 326)
+script = ExtResource("4_u8t00")
+randomStrength = 10.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="dialogue_over" from="Dialog" to="." method="_on_dialog_dialogue_over"]

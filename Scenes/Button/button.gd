@@ -11,9 +11,12 @@ signal enemy_killed
 var trans = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if !get_parent().game_active:
+		return
 	if(event.is_action_pressed(input_name)):
 		print_debug(input_name)
 		$AnimatedSprite2D.play("pressed")
+		$Splash.play("splash")
 		var children = get_children(false)
 		var was_valid_input = false
 		if(red_button):
@@ -48,10 +51,11 @@ func red_out():
 	$AnimatedSprite2D.play("red_out")
 
 func _process(delta: float) -> void:
-	if(!trans):
-		$AnimatedSprite2D.modulate = color_mix
-	else:
-		$AnimatedSprite2D.modulate = Color(1,1,1)
+	match $AnimatedSprite2D.animation:
+		"default", "pressed":
+			$AnimatedSprite2D.modulate = color_mix
+		_:
+			$AnimatedSprite2D.modulate = Color(1,1,1)
 
 func spawn_enemy():
 	if(trans):
@@ -60,11 +64,12 @@ func spawn_enemy():
 		return
 	if(randi_range(0,1)==1):
 		var enemy = ENEMY.instantiate()
-		print_debug(randf_range(0.0, 2.0) * PI)
 		add_child(enemy)
 		enemy.global_position = global_position
-		enemy.global_rotation=randf_range(0, 2 * PI)
-		enemy.look_at(global_position)
+		var rotated = randi_range(0, 1)
+		if(rotated ==1):
+			enemy.flip_animation()
+		enemy.global_rotation=rotated*PI
 		enemy.enemy_attacked.connect(enemy_attacked)
 
 func enemy_attacked():
@@ -109,4 +114,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if(trans):
 		if($AnimatedSprite2D.animation == "red_out"):
 			red_button = false
+			$AnimatedSprite2D.play("default")
 		trans = false

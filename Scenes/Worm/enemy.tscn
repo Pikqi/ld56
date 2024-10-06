@@ -1,14 +1,61 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuvoq65ec58jk"]
+[gd_scene load_steps=18 format=3 uid="uid://cuvoq65ec58jk"]
 
 [ext_resource type="Script" path="res://Scenes/Worm/enemy.gd" id="1_t2xh1"]
 [ext_resource type="Texture2D" uid="uid://7a1smbkaiutn" path="res://icon.svg" id="2_qu5u7"]
-[ext_resource type="Texture2D" uid="uid://bjb6konwfdwma" path="res://Assets/Worm/1.png" id="3_6av35"]
-[ext_resource type="Texture2D" uid="uid://cowon23pejcb6" path="res://Assets/Worm/2.png" id="4_x02e0"]
-[ext_resource type="Texture2D" uid="uid://dl0wp6buga4d" path="res://Assets/Worm/3.png" id="5_eqhaj"]
-[ext_resource type="Texture2D" uid="uid://c6cj6t3538iox" path="res://Assets/Worm/4.png" id="6_v8bp8"]
+[ext_resource type="Texture2D" uid="uid://cex3sifrw1242" path="res://Assets/Worm/1.png" id="3_6av35"]
+[ext_resource type="Texture2D" uid="uid://dactqej8ynl64" path="res://Assets/Worm/2.png" id="4_x02e0"]
+[ext_resource type="Texture2D" uid="uid://cux4bd7fifyd6" path="res://Assets/Worm/3.png" id="5_eqhaj"]
+[ext_resource type="Texture2D" uid="uid://72t1c28fr2nl" path="res://Assets/Worm/4.png" id="6_v8bp8"]
+[ext_resource type="Texture2D" uid="uid://cimvprnm3ca2a" path="res://Assets/Worm/5.png" id="7_7om5h"]
+[ext_resource type="Texture2D" uid="uid://5ulqrr6hbxm8" path="res://Assets/Worm/6.png" id="8_ehav7"]
+[ext_resource type="Texture2D" uid="uid://du2p38ha0txko" path="res://Assets/Worm/2_back.png" id="9_jymta"]
+[ext_resource type="Texture2D" uid="uid://brf7f6oxfgebt" path="res://Assets/Worm/3_back.png" id="10_1wx05"]
+[ext_resource type="Texture2D" uid="uid://dnwrxihviw0rk" path="res://Assets/Worm/2_back_alt.png" id="11_gy0bh"]
+[ext_resource type="Texture2D" uid="uid://uwspas3u4wv1" path="res://Assets/Worm/4_back.png" id="12_gpphe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ydqfm"]
+load_path = "res://.godot/imported/1.png-d59e84433910eecfa2e5220e6ec5b5b4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ap4lv"]
+load_path = "res://.godot/imported/2.png-90fe91be8b8400834bfb6934ea879095.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_prrpc"]
+load_path = "res://.godot/imported/3.png-0463e07c1bea2f543f4c3653457283e4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3mwge"]
+load_path = "res://.godot/imported/4.png-4b049625170874896147063dd9a56363.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5w8q8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6av35")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_x02e0")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_eqhaj")
+}, {
+"duration": 4.0,
+"texture": ExtResource("6_v8bp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7om5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ehav7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7om5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ehav7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 9.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -16,16 +63,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_jymta")
+}, {
+"duration": 1.0,
 "texture": ExtResource("3_6av35")
+}],
+"loop": false,
+"name": &"defeated_2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_1wx05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gy0bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6av35")
+}],
+"loop": false,
+"name": &"defeated_3",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gpphe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1wx05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gy0bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6av35")
+}],
+"loop": false,
+"name": &"defeated_4",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ydqfm")
 }, {
 "duration": 3.0,
-"texture": ExtResource("4_x02e0")
+"texture": SubResource("CompressedTexture2D_ap4lv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_eqhaj")
+"texture": SubResource("CompressedTexture2D_prrpc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_v8bp8")
+"texture": SubResource("CompressedTexture2D_3mwge")
 }],
 "loop": false,
 "name": &"new_animation",
@@ -33,8 +122,11 @@ animations = [{
 }]
 
 [node name="Enemy" type="Node2D" groups=["enemy_group"]]
+z_index = 10
+y_sort_enabled = true
 position = Vector2(10, 9)
 script = ExtResource("1_t2xh1")
+color = Color(0.610846, 0.557314, 0.897917, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -51,9 +143,10 @@ one_shot = true
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-22, -55)
+position = Vector2(-66, -21)
+scale = Vector2(0.282227, 0.282227)
 sprite_frames = SubResource("SpriteFrames_5w8q8")
-animation = &"new_animation"
+animation = &"defeated_4"
 
 [connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]

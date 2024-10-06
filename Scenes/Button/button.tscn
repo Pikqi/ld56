@@ -1,18 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhvihrt8dipll"]
+[gd_scene load_steps=18 format=3 uid="uid://bhvihrt8dipll"]
 
 [ext_resource type="Script" path="res://Scenes/Button/button.gd" id="1_fkyus"]
-[ext_resource type="Texture2D" uid="uid://q85jhjrqsrxk" path="res://Assets/Buttons/Idle.png" id="2_01nlj"]
-[ext_resource type="Texture2D" uid="uid://blatwufdrwqml" path="res://Assets/Buttons/PressedIn1.png" id="3_180hi"]
-[ext_resource type="Texture2D" uid="uid://4c7qtuk0exng" path="res://Assets/Buttons/FullPressed.png" id="4_5m7c4"]
-[ext_resource type="Texture2D" uid="uid://ncd65m8iq7l0" path="res://Assets/Buttons/PressedOut.png" id="5_3xqo8"]
-[ext_resource type="Texture2D" uid="uid://chckt1ppwsjq" path="res://Assets/Buttons/FORBIDDEN.png" id="6_p5821"]
-[ext_resource type="Texture2D" uid="uid://cw6je7hakttbq" path="res://Assets/Buttons/ERROR.png" id="7_3w6j8"]
+[ext_resource type="Texture2D" uid="uid://cmnangp78o1y6" path="res://Assets/Buttons/IMG_3394.png" id="2_jyhi7"]
+[ext_resource type="Texture2D" uid="uid://8ce1ggql35ki" path="res://Assets/Buttons/IMG_3403.png" id="3_1lg6b"]
+[ext_resource type="Texture2D" uid="uid://e40ep7k06vl7" path="res://Assets/Buttons/IMG_3395.png" id="4_ho636"]
+[ext_resource type="Texture2D" uid="uid://cdilvc7bopjtg" path="res://Assets/Buttons/IMG_3393.png" id="5_wgvcg"]
+[ext_resource type="Texture2D" uid="uid://cqmf1i4v81bl6" path="res://Assets/Buttons/IMG_3402.png" id="6_lmv6p"]
+[ext_resource type="Texture2D" uid="uid://iujiv0je2v1i" path="res://Assets/Explosion/IMG_3416.png" id="7_dr88a"]
+[ext_resource type="Texture2D" uid="uid://ba0lrop3un1m5" path="res://Assets/Explosion/IMG_3417.png" id="8_ysgst"]
+[ext_resource type="Texture2D" uid="uid://b6vg8rn1eiako" path="res://Assets/Explosion/IMG_3418.png" id="9_gkfcp"]
+[ext_resource type="Texture2D" uid="uid://bf4eob20ngfhc" path="res://Assets/Explosion/IMG_3419.png" id="10_dyy7c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6vho0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gda8k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y30w1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ej84g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_leuex"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
+"texture": ExtResource("2_jyhi7")
 }],
 "loop": false,
 "name": &"default",
@@ -20,16 +31,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_180hi")
+"texture": ExtResource("3_1lg6b")
 }, {
-"duration": 3.0,
-"texture": ExtResource("4_5m7c4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_3xqo8")
+"duration": 2.0,
+"texture": ExtResource("4_ho636")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
+"texture": ExtResource("3_1lg6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jyhi7")
 }],
 "loop": false,
 "name": &"pressed",
@@ -37,71 +48,101 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_p5821")
+"texture": SubResource("CompressedTexture2D_6vho0")
+}, {
+"duration": 3.0,
+"texture": SubResource("CompressedTexture2D_gda8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_y30w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ej84g")
 }],
-"loop": true,
+"loop": false,
+"name": &"pressed_old",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wgvcg")
+}],
+"loop": false,
 "name": &"red",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_3w6j8")
+"texture": ExtResource("6_lmv6p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
+"texture": ExtResource("5_wgvcg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_3w6j8")
+"texture": ExtResource("6_lmv6p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3w6j8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_01nlj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_p5821")
+"texture": ExtResource("5_wgvcg")
 }],
 "loop": false,
 "name": &"red_in",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_3w6j8")
+"texture": ExtResource("6_lmv6p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
+"texture": ExtResource("5_wgvcg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_3w6j8")
+"texture": ExtResource("6_lmv6p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_01nlj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3w6j8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_01nlj")
+"texture": ExtResource("5_wgvcg")
 }],
 "loop": false,
 "name": &"red_out",
-"speed": 3.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0l4p"]
 radius = 10.4089
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_va6xu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dr88a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ysgst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gkfcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dyy7c")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"splash",
+"speed": 12.0
+}]
+
 [node name="Button" type="Node2D"]
 script = ExtResource("1_fkyus")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.38, 1.316)
+scale = Vector2(0.267899, 0.255474)
 sprite_frames = SubResource("SpriteFrames_leuex")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -112,6 +153,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(4.74125, 4.84)
 shape = SubResource("CircleShape2D_l0l4p")
+
+[node name="Splash" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 31)
+scale = Vector2(0.348624, 0.348624)
+sprite_frames = SubResource("SpriteFrames_va6xu")
+animation = &"splash"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

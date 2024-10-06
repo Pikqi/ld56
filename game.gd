@@ -3,29 +3,29 @@ extends Node2D
 const MAX_HEALTH = 100.0
 const RECOVERY_RATE = 10.0
 const BAD_PRESS_DAMAGE = 20.0
-const MAX_ENEMIES = 3
+const MAX_ENEMIES = 4
 
 const INIT_COLOR = Color(1,0,0,0)
 var health = MAX_HEALTH
 
-
-var spawn_interval = 1.5
-var interval_step = 0.05
-var max_out = 0.7
+var spawn_interval = 0.8
+var interval_step = 0.1
+var max_out = 0.8
 
 var player_score = 0
-
 var first_time = true
-
+var game_active = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		$SpawnTimer.paused = false
+		start_game()
+
 
 func _ready() -> void:
 	$Dialog.start()
 
 func start_game():
+	game_active = true
 	$SpawnTimer.start()
 	change_red_button()
 	first_time = false
@@ -45,14 +45,17 @@ func _process(delta: float) -> void:
 	%DamageColorOverlay.color = new_color
 	if health < 5:
 		$SpawnTimer.paused =true
+		game_active = false
 
 func bad_press():
 	health = maxf(health - BAD_PRESS_DAMAGE, 0)
 	spawn_interval -= interval_step
+	$Camera2D.apply_shake()
 
 func ate():
 	health = maxf(health - BAD_PRESS_DAMAGE, 0)
 	spawn_interval += interval_step
+	$Camera2D.apply_shake()
 
 func red_button_press():
 	health = 0
@@ -91,7 +94,7 @@ func _on_spawn_timer_timeout() -> void:
 	return
 func on_enemy_killed():
 	player_score+=1
-	print_debug(player_score)
+	$CanvasLayer/Label.text = str(player_score)
 
 
 func _on_dialog_dialogue_over() -> void:
