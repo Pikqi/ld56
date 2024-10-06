@@ -39,22 +39,27 @@ animations = [{
 }, {
 "duration": 4.0,
 "texture": ExtResource("6_v8bp8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_7om5h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ehav7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_7om5h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ehav7")
 }],
 "loop": false,
 "name": &"attack",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ehav7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7om5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ehav7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7om5h")
+}],
+"loop": false,
+"name": &"attack_2",
+"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
@@ -70,7 +75,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"defeated_2",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -101,7 +106,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"defeated_4",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -146,7 +151,7 @@ autostart = true
 position = Vector2(-66, -21)
 scale = Vector2(0.282227, 0.282227)
 sprite_frames = SubResource("SpriteFrames_5w8q8")
-animation = &"defeated_4"
+animation = &"defeated_2"
 
 [connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]

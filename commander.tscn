@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://u7xv8jgsa78g"]
+
+[ext_resource type="Texture2D" uid="uid://d4bxotobnphqi" path="res://Assets/Commrade/IMG_3420.png" id="1_afvgu"]
+[ext_resource type="Texture2D" uid="uid://ba3dsigd7bt8g" path="res://Assets/Commrade/IMG_3421.png" id="2_adj7w"]
+[ext_resource type="Texture2D" uid="uid://26u2jyl2x1mo" path="res://Assets/Commrade/IMG_3422.png" id="3_672my"]
+[ext_resource type="Texture2D" uid="uid://c8dnno2gbg2eb" path="res://Assets/Commrade/IMG_3423.png" id="4_j3c1o"]
+[ext_resource type="Texture2D" uid="uid://d0rh3bchcydxd" path="res://Assets/Commrade/IMG_3424.png" id="5_qsmgr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpyc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_afvgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_adj7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_672my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j3c1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qsmgr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Commander" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.284974, 0.284974)
+sprite_frames = SubResource("SpriteFrames_dpyc6")

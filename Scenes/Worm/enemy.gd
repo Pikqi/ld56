@@ -5,21 +5,23 @@ signal enemy_attacked
 func button_pressed():
 	$AnimatedSprite2D.play("defeated_3")
 
-func _on_first_timer_timeout() -> void:
-	scale = Vector2(1.2,1.2)
-
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.modulate=color
-func _on_second_timer_timeout() -> void:
-	scale = Vector2(1.4,1.4)
+
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("attack")
 
-func flip_animation():
-	scale.y = -scale.y
+func mirror():
+	scale.x = -scale.x
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if($AnimatedSprite2D.animation == "attack"):
 		enemy_attacked.emit()
-	queue_free()
+		$AnimatedSprite2D.play("attack_2")
+		return
+	print_debug($AnimatedSprite2D.animation)
+	match $AnimatedSprite2D.animation:
+		"defeated_3", "defeated_2", "defeated_4", "attack_2":
+			queue_free()
+			return

@@ -67,9 +67,9 @@ func spawn_enemy():
 		add_child(enemy)
 		enemy.global_position = global_position
 		var rotated = randi_range(0, 1)
-		if(rotated ==1):
-			enemy.flip_animation()
-		enemy.global_rotation=rotated*PI
+		if(rotated == 1):
+			enemy.mirror()
+		#enemy.global_rotation=rotated*PI
 		enemy.enemy_attacked.connect(enemy_attacked)
 
 func enemy_attacked():

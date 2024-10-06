@@ -1,16 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://decsef3jj3lt5"]
+[gd_scene load_steps=10 format=3 uid="uid://decsef3jj3lt5"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_bhcvq"]
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://Scenes/Button/button.tscn" id="1_j4pve"]
+[ext_resource type="Shader" path="res://game.gdshader" id="2_k6uao"]
 [ext_resource type="PackedScene" uid="uid://du2jgrreaylhr" path="res://Scenes/dialog.tscn" id="3_s0nfr"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="4_u8t00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sesmb"]
 size = Vector2(995, 433.534)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rpvun"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0s1i7"]
+seamless = true
+seamless_blend_skirt = 0.279
+noise = SubResource("FastNoiseLite_rpvun")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob5l5"]
+shader = ExtResource("2_k6uao")
+shader_parameter/Transparency = 3.0
+shader_parameter/Slow = 25.0
+shader_parameter/Noise = SubResource("NoiseTexture2D_0s1i7")
+
 [node name="Game" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_bhcvq")
+
+[node name="Dialog" parent="." instance=ExtResource("3_s0nfr")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -41,6 +57,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
+
+[node name="Dialog2" parent="CanvasLayer" instance=ExtResource("3_s0nfr")]
 
 [node name="A" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(872, 515)
@@ -83,6 +101,7 @@ input_name = "B"
 color_mix = Color(0.74, 0, 0.0123331, 1)
 
 [node name="SpawnArea" type="Area2D" parent="."]
+visible = false
 scale = Vector2(1, 1.02189)
 metadata/_edit_group_ = true
 
@@ -94,12 +113,17 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Dialog" parent="." instance=ExtResource("3_s0nfr")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 script = ExtResource("4_u8t00")
 randomStrength = 10.0
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[node name="shader" type="ColorRect" parent="."]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_ob5l5")
+offset_right = 1177.0
+offset_bottom = 668.0
+
 [connection signal="dialogue_over" from="Dialog" to="." method="_on_dialog_dialogue_over"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
