@@ -2,7 +2,7 @@ extends Node2D
 
 @export var input_name = ""
 @export var color_mix:Color = Color(1,1,1)
-const ENEMY = preload("res://enemy.tscn")
+const ENEMY = preload("res://Scenes/Worm/enemy.tscn")
 const DISTANCE = 40
 var red_button = false
 var should_move = false

@@ -23,11 +23,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		$SpawnTimer.paused = false
 
 func _ready() -> void:
+	$Dialog.start()
+
+func start_game():
+	$SpawnTimer.start()
 	change_red_button()
 	first_time = false
 	$SpawnTimer.wait_time = spawn_interval
 	for button in get_tree().get_nodes_in_group("button_group"):
 		button.enemy_killed.connect(on_enemy_killed)
+
 
 func _process(delta: float) -> void:
 	health = minf(health + RECOVERY_RATE * delta ,MAX_HEALTH)
@@ -87,3 +92,7 @@ func _on_spawn_timer_timeout() -> void:
 func on_enemy_killed():
 	player_score+=1
 	print_debug(player_score)
+
+
+func _on_dialog_dialogue_over() -> void:
+	start_game()

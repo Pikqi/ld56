@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ncd65m8iq7l0"
-path="res://.godot/imported/PressedOut.png-9796e7372947b19c113dcbcbde6b5b56.ctex"
+uid="uid://cowon23pejcb6"
+path="res://.godot/imported/2.png-90fe91be8b8400834bfb6934ea879095.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Buttons/PressedOut.png"
-dest_files=["res://.godot/imported/PressedOut.png-9796e7372947b19c113dcbcbde6b5b56.ctex"]
+source_file="res://Assets/Worm/2.png"
+dest_files=["res://.godot/imported/2.png-90fe91be8b8400834bfb6934ea879095.ctex"]
 
 [params]
 

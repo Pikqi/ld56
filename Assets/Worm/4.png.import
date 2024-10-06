@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4c7qtuk0exng"
-path="res://.godot/imported/FullPressed.png-f20f7171b0bcb8d71198a38c00af8073.ctex"
+uid="uid://c6cj6t3538iox"
+path="res://.godot/imported/4.png-4b049625170874896147063dd9a56363.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Buttons/FullPressed.png"
-dest_files=["res://.godot/imported/FullPressed.png-f20f7171b0bcb8d71198a38c00af8073.ctex"]
+source_file="res://Assets/Worm/4.png"
+dest_files=["res://.godot/imported/4.png-4b049625170874896147063dd9a56363.ctex"]
 
 [params]
 

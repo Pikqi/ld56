@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bhvihrt8dipll"]
 
-[ext_resource type="Script" path="res://button.gd" id="1_fkyus"]
-[ext_resource type="Texture2D" uid="uid://q85jhjrqsrxk" path="res://Buttons/Idle.png" id="2_01nlj"]
-[ext_resource type="Texture2D" uid="uid://blatwufdrwqml" path="res://Buttons/PressedIn1.png" id="3_180hi"]
-[ext_resource type="Texture2D" uid="uid://4c7qtuk0exng" path="res://Buttons/FullPressed.png" id="4_5m7c4"]
-[ext_resource type="Texture2D" uid="uid://ncd65m8iq7l0" path="res://Buttons/PressedOut.png" id="5_3xqo8"]
-[ext_resource type="Texture2D" uid="uid://chckt1ppwsjq" path="res://Buttons/FORBIDDEN.png" id="6_p5821"]
-[ext_resource type="Texture2D" uid="uid://cw6je7hakttbq" path="res://Buttons/ERROR.png" id="7_3w6j8"]
+[ext_resource type="Script" path="res://Scenes/Button/button.gd" id="1_fkyus"]
+[ext_resource type="Texture2D" uid="uid://q85jhjrqsrxk" path="res://Assets/Buttons/Idle.png" id="2_01nlj"]
+[ext_resource type="Texture2D" uid="uid://blatwufdrwqml" path="res://Assets/Buttons/PressedIn1.png" id="3_180hi"]
+[ext_resource type="Texture2D" uid="uid://4c7qtuk0exng" path="res://Assets/Buttons/FullPressed.png" id="4_5m7c4"]
+[ext_resource type="Texture2D" uid="uid://ncd65m8iq7l0" path="res://Assets/Buttons/PressedOut.png" id="5_3xqo8"]
+[ext_resource type="Texture2D" uid="uid://chckt1ppwsjq" path="res://Assets/Buttons/FORBIDDEN.png" id="6_p5821"]
+[ext_resource type="Texture2D" uid="uid://cw6je7hakttbq" path="res://Assets/Buttons/ERROR.png" id="7_3w6j8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_leuex"]
 animations = [{

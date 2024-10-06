@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl0wp6buga4d"
-path="res://.godot/imported/3.png-3c71a66973d42fb571c23be36a651538.ctex"
+uid="uid://61did6cf2bnh"
+path="res://.godot/imported/dialogue_box.png-44428d683d811a011da29d134c2a81ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Worm/3.png"
-dest_files=["res://.godot/imported/3.png-3c71a66973d42fb571c23be36a651538.ctex"]
+source_file="res://Assets/dialogue_box.png"
+dest_files=["res://.godot/imported/dialogue_box.png-44428d683d811a011da29d134c2a81ea.ctex"]
 
 [params]
 

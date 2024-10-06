@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://du2jgrreaylhr"]
+
+[ext_resource type="Script" path="res://Scenes/dialog.gd" id="1_lru6p"]
+[ext_resource type="Texture2D" uid="uid://61did6cf2bnh" path="res://Assets/dialogue_box.png" id="2_cuk8x"]
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource("1_lru6p")
+d_file = "res://Assets/dialogs.json"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 101.0
+offset_bottom = 35.0
+scale = Vector2(5.08, 5.08)
+texture = ExtResource("2_cuk8x")
+region_rect = Rect2(0.0332336, 0.310051, 31.9668, 31.6899)
+patch_margin_left = 7
+patch_margin_top = 9
+patch_margin_right = 7
+patch_margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 4.33071
+offset_top = 0.787402
+offset_right = 227.331
+offset_bottom = 26.7874
+scale = Vector2(0.450723, 0.450723)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.29921
+offset_top = 7.87402
+offset_right = 214.299
+offset_bottom = 59.874
+scale = Vector2(0.450723, 0.450723)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Text"
