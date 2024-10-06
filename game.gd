@@ -22,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	$Dialog.start()
+	$Dialog.start_dialog_1()
 
 func start_game():
 	game_active = true

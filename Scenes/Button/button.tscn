@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Button/button.gd" id="1_fkyus"]
 [ext_resource type="Texture2D" uid="uid://cmnangp78o1y6" path="res://Assets/Buttons/IMG_3394.png" id="2_jyhi7"]
 [ext_resource type="Texture2D" uid="uid://8ce1ggql35ki" path="res://Assets/Buttons/IMG_3403.png" id="3_1lg6b"]
-[ext_resource type="Texture2D" uid="uid://e40ep7k06vl7" path="res://Assets/Buttons/IMG_3395.png" id="4_ho636"]
+[ext_resource type="Texture2D" uid="uid://c4efcnd8qyo2p" path="res://Assets/Buttons/IMG_3495.png" id="4_dyrxo"]
 [ext_resource type="Texture2D" uid="uid://cdilvc7bopjtg" path="res://Assets/Buttons/IMG_3393.png" id="5_wgvcg"]
 [ext_resource type="Texture2D" uid="uid://cqmf1i4v81bl6" path="res://Assets/Buttons/IMG_3402.png" id="6_lmv6p"]
 [ext_resource type="Texture2D" uid="uid://iujiv0je2v1i" path="res://Assets/Explosion/IMG_3416.png" id="7_dr88a"]
@@ -34,7 +34,7 @@ animations = [{
 "texture": ExtResource("3_1lg6b")
 }, {
 "duration": 2.0,
-"texture": ExtResource("4_ho636")
+"texture": ExtResource("4_dyrxo")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_1lg6b")

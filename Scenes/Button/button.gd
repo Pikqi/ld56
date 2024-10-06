@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var input_name = ""
-@export var color_mix:Color = Color(1,1,1)
 const ENEMY = preload("res://Scenes/Worm/enemy.tscn")
 const DISTANCE = 40
 var red_button = false
@@ -51,11 +50,7 @@ func red_out():
 	$AnimatedSprite2D.play("red_out")
 
 func _process(delta: float) -> void:
-	match $AnimatedSprite2D.animation:
-		"default", "pressed":
-			$AnimatedSprite2D.modulate = color_mix
-		_:
-			$AnimatedSprite2D.modulate = Color(1,1,1)
+	pass
 
 func spawn_enemy():
 	if(trans):

@@ -6,7 +6,7 @@ var dialog_step = 0
 var is_dialog_active = false
 signal dialogue_over
 
-func start():
+func start_dialog_1():
 	visible = true
 	is_dialog_active = true
 	dialogue = load_dialogue()
@@ -25,8 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		handle_dialog_change()
 
 func handle_dialog_change():
-	$NinePatchRect/Name.text = dialogue[dialog_step].name
-	$NinePatchRect/Text.text = dialogue[dialog_step].text
+	$Text.text = dialogue[dialog_step].text
 
 
 func load_dialogue():
