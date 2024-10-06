@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhvihrt8dipll"]
+[gd_scene load_steps=10 format=3 uid="uid://bhvihrt8dipll"]
 
 [ext_resource type="Script" path="res://button.gd" id="1_fkyus"]
 [ext_resource type="Texture2D" uid="uid://q85jhjrqsrxk" path="res://Buttons/Idle.png" id="2_01nlj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4c7qtuk0exng" path="res://Buttons/FullPressed.png" id="4_5m7c4"]
 [ext_resource type="Texture2D" uid="uid://ncd65m8iq7l0" path="res://Buttons/PressedOut.png" id="5_3xqo8"]
 [ext_resource type="Texture2D" uid="uid://chckt1ppwsjq" path="res://Buttons/FORBIDDEN.png" id="6_p5821"]
+[ext_resource type="Texture2D" uid="uid://cw6je7hakttbq" path="res://Buttons/ERROR.png" id="7_3w6j8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_leuex"]
 animations = [{
@@ -41,6 +42,55 @@ animations = [{
 "loop": true,
 "name": &"red",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p5821")
+}],
+"loop": false,
+"name": &"red_in",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3w6j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_01nlj")
+}],
+"loop": false,
+"name": &"red_out",
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0l4p"]
@@ -53,7 +103,6 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.38, 1.316)
 sprite_frames = SubResource("SpriteFrames_leuex")
-animation = &"pressed"
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(1.21306, 1.21306)
@@ -64,5 +113,6 @@ collision_mask = 2
 scale = Vector2(4.74125, 4.84)
 shape = SubResource("CircleShape2D_l0l4p")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

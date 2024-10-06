@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhvihrt8dipll" path="res://button.tscn" id="1_j4pve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sesmb"]
-size = Vector2(469, 405.155)
+size = Vector2(995, 433.534)
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -31,6 +31,26 @@ position = Vector2(872, 515)
 input_name = "A"
 color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
 
+[node name="DOWN" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(236, 515)
+input_name = "DOWN"
+color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
+
+[node name="UP" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(236, 330)
+input_name = "UP"
+color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
+
+[node name="RIGHT" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(334, 422)
+input_name = "RIGHT"
+color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
+
+[node name="LEFT" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
+position = Vector2(143, 422)
+input_name = "LEFT"
+color_mix = Color(1.01075e-06, 0.583986, 0.337423, 1)
+
 [node name="Y" parent="." groups=["button_group"] instance=ExtResource("1_j4pve")]
 position = Vector2(872, 330)
 input_name = "Y"
@@ -51,7 +71,7 @@ scale = Vector2(1, 1.02189)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
-position = Vector2(832.5, 392.423)
+position = Vector2(569.5, 378.233)
 shape = SubResource("RectangleShape2D_sesmb")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
 

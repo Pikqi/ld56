@@ -6,6 +6,9 @@ const ENEMY = preload("res://enemy.tscn")
 const DISTANCE = 40
 var red_button = false
 var should_move = false
+signal enemy_killed
+
+var trans = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if(event.is_action_pressed(input_name)):
@@ -18,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		for a in children:
 			if(a.has_method("button_pressed")):
 				a.button_pressed()
+				enemy_killed.emit()
 				was_valid_input = true
 		if(!was_valid_input):
 			if get_parent().has_method("bad_press"):
@@ -33,10 +37,25 @@ func set_red_button(is_red: bool):
 	else:
 		$AnimatedSprite2D.play("default")
 
-#func _process(delta: float) -> void:
-	#$AnimatedSprite2D.modulate = color_mix
+func red_in():
+	red_button = true
+	trans = true
+	$AnimatedSprite2D.play("red_in")
+
+func red_out():
+	red_button = true
+	trans = true
+	$AnimatedSprite2D.play("red_out")
+
+func _process(delta: float) -> void:
+	if(!trans):
+		$AnimatedSprite2D.modulate = color_mix
+	else:
+		$AnimatedSprite2D.modulate = Color(1,1,1)
 
 func spawn_enemy():
+	if(trans):
+		return
 	if get_has_enemy():
 		return
 	if(randi_range(0,1)==1):
@@ -53,13 +72,13 @@ func enemy_attacked():
 	if red_button:
 		get_parent().change_red_button()
 		return
-	move_button()
+	#move_button()
+	get_parent().ate()
 
 
-
-func move_button():
-	should_move = true
-	global_position = get_random_position()
+#func move_button():
+	#should_move = true
+	#global_position = get_random_position()
 
 
 func get_random_position():
@@ -74,13 +93,20 @@ func get_random_position():
 
 var should_really_move = false
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if should_really_move:
-		move_button()
-	if should_move:
-		move_button()
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	#if should_really_move:
+		#move_button()
+	#if should_move:
+		#move_button()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if should_move:
 		should_really_move = true
 	should_move = false
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if(trans):
+		if($AnimatedSprite2D.animation == "red_out"):
+			red_button = false
+		trans = false
