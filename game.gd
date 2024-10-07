@@ -38,7 +38,7 @@ func start_game():
 	player_score = 0
 	draw_score()
 	%Dialog.visible = false
-	change_red_button()
+	change_red_button(true)
 	first_time = false
 	$SpawnTimer.wait_time = spawn_interval
 	for button in get_tree().get_nodes_in_group("button_group"):
@@ -86,7 +86,7 @@ func ate():
 func red_button_press():
 	health = 0
 
-func change_red_button():
+func change_red_button(is_first = false):
 	var buttons = get_tree().get_nodes_in_group("button_group")
 	var old_red_button_index = -1
 	if buttons.filter(func (n: Node): return n.red_button).size() > 0:
@@ -94,7 +94,7 @@ func change_red_button():
 		old_red_button_index = buttons.find(old_red_button)
 	var r = randi_range(0, buttons.size()-1)
 
-	while (r == old_red_button_index || buttons[r].get_has_enemy()):
+	while (r == old_red_button_index || buttons[r].get_has_enemy() || (is_first && buttons[r].input_name=="A")):
 		r= randi_range(0, buttons.size()-1)
 	if(!first_time):
 		buttons[old_red_button_index].red_out()
